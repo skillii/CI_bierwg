@@ -1,0 +1,99 @@
+% **************************************************************************************************
+% ** SPSC Report and Thesis Template
+% **************************************************************************************************
+%
+% ***** Authors *****
+% Daniel Arnitz, Paul Meissner, Stefan Petrik
+% Signal Processing and Speech Communication Laboratory (SPSC)
+% Graz University of Technology (TU Graz), Austria
+%
+% ***** Changelog *****
+% 0.1   2010-01-25   extracted from report template by Daniel Arnitz (not ready yet)
+% 0.2   2010-02-08   added thesis titlepage and modified layout (not ready yet)
+% 0.3   2010-02-18   added TUG logo and statutory declaration
+% 0.4   2010-02-18   moved the information fields below \input{./base/packages} (encoding...)
+% 0.5   2010-03-02   added \ShortTitle to fix problems with long thesis titles
+%                    added \ThesisType (makes the template suitable for MSc, BSc, PhD, ... Thesis)
+%
+% ***** Todo *****
+% - Introduction/Usage
+% **************************************************************************************************
+
+% **************************************************************************************************
+% basic setup
+\newcommand{\DocumentType}{report} % "thesis" / "report"
+\newcommand{\DocumentLanguage}{de} % "en" / "de"
+\newcommand{\Twosided}{} % "twoside" / ""
+
+
+% **************************************************************************************************
+% template setup -- do not change these unless you know what you are doing!
+\input{./base/packages}
+\input{./base/layout_\DocumentType}
+\input{./base/macros}
+\graphicspath{{./drawings/}{./plots/}{./images/}}
+% **************************************************************************************************
+% ATTENTION: Make sure that makeindex is set to -s "./base/index.sty"
+% **************************************************************************************************
+
+% uncomment to get watermarks:
+% \usepackage[first,bottom,light,draft]{draftcopy}
+% \draftcopyName{ENTWURF}{160}
+
+
+% **************************************************************************************************
+% information fields
+
+% general
+\newcommand{\DocumentTitle}{Computational Intelligence UE}
+\newcommand{\DocumentSubtitle}{Homework 1: Linear Regression}
+\newcommand{\ShortTitle}{CI Homework 1} % used in headers (keep short!)
+\newcommand{\DocumentAuthor}{Thomas Ebner, Raphael Hoheneder, Stefan Nöhmer}
+\newcommand{\DocumentDate}{Graz, \today}
+%    for thesis only (will be ignored for reports)
+\newcommand{\ThesisType}{Master's Thesis}
+\newcommand{\Organizations}{Signal Processing and Speech Communications Laboratory \\ Graz University of Technology \\[1cm] on behalf of \\ Some Company} % SPSC \\ TUG \\[1cm] on behalf of \\ A Nice Company
+\newcommand{\Advisors}{Dipl.-Ing. Dr. Assoc.Prof. Klaus Witrisal \\ Dipl.-Ing. Paul Meissner} % Advisor 1 \\ Advisor 2 \\ ...
+\newcommand{\Supervisors}{Univ.-Prof. Dipl.-Ing. Dr.techn. Gernot Kubin}
+
+% revision number
+\newcommand{\RevPrefix}{alpha~}
+\newcommand{\RevLarge}{1}
+\newcommand{\RevSmall}{1}
+
+% confidential?
+\newcommand{\ConfidNote}{confidential}% {"confidential", "eyes only", ...}
+
+
+
+\begin{document}
+% **************************************************************************************************
+% titlepage
+\input{./base/titlepage_\DocumentType}
+
+% statutory declaration for theses
+\ifthenelse{\equal{\DocumentType}{thesis}}{\input{./base/declaration}}{}
+
+
+% **************************************************************************************************
+% **************************************************************************************************
+% user-defined part
+
+\chapter{Homework: Linear Regression}
+\section{Linear Regression with Non-Linear Basis-Functions}
+\input{111}
+\input{112}
+\input{113}
+\input{114}
+
+% **************************************************************************************************
+% **************************************************************************************************
+
+%\appendix
+%\bibliographystyle{/.base/ieeetran}
+%\bibliography{_bibliography}
+
+% place all floats and create label on last page
+\FloatBarrier\label{end-of-document}
+\end{document}
+
