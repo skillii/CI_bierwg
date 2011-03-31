@@ -38,7 +38,7 @@ for l = 0:l_max
     y(:,l+1) = X_test*W;
     my_plot = plot(x_test, y(:,l+1));
     hold on;
-    set(my_plot, 'Color', [1, l/(l_max+1) , 1-l/(l_max+1)]);
+    set(my_plot, 'Color', [l/(l_max+1), l/(l_max+1) , 1-l/(l_max+1)]);
     
 
 end

@@ -35,18 +35,15 @@ W_mean = zeros(1,length(alpha));
 
 %output y berechnen
 for i=1:length(alpha)
-    W = inv(X_train'*X_train - alpha(i)^2*length(x_train)*eye(l+1))*X_train'*y_train;
+    W = inv(X_train'*X_train + alpha(i)^2*length(x_train)*eye(l+1))*X_train'*y_train;
     
-    W_mean(i) = mean(W);
+    W_mean(i) = mean(abs(W));
     
     y_our_train_poly(:,i) = X_train*W;
 
     y_our_test_poly(:,i) = X_test*W;
     
 end
-
-
-
 
 
 %MSE plotten:
@@ -61,6 +58,10 @@ figure
 semilogx(alpha, mse_test_poly, 'r-');
 hold on;
 semilogx(alpha, mse_train_poly, 'b-');
+title('Polynomial Basis functions: MSE');
+xlabel('alpha');
+ylabel('MSE');
+legend('Output testdata', 'Output trainingdata');
 
 
 figure();
@@ -73,10 +74,19 @@ plot(x_test, y_our_test_poly(:,length(alpha)), 'g-');
 plot(x_test, y_our_test_poly(:,I), 'b-');
 
 plot(x_train, y_train, ' +');
+title('Polynomial Basis functions: learned functions');
+xlabel('x_{test}');
+ylabel('y_{test}');
+legend('lowest alpha', 'highest alpha', 'best alpha', 'trainingdata');
+axis([-1 1 -10 10]);
+
 
 figure
 
 semilogx(alpha, W_mean);
+title('Polynomial Basis functions: mean absolute weight values');
+xlabel('alpha');
+ylabel('W_{mean}');
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -99,9 +109,9 @@ X_test = exp((-(x_test_mat-myh_test).^2)./((2/d).^2));
 
 %output y berechnen
 for i=1:length(alpha)
-    W = inv(X_train'*X_train - alpha(i)^2*length(x_train)*eye(d))*X_train'*y_train;
+    W = inv(X_train'*X_train + alpha(i)^2*length(x_train)*eye(d))*X_train'*y_train;
     
-    W_mean(i) = mean(W);
+    W_mean(i) = mean(abs(W));
 
     y_our_train_radial(:,i) = X_train*W;
 
@@ -122,7 +132,10 @@ figure
 semilogx(alpha, mse_test_radial, 'r-');
 hold on;
 semilogx(alpha, mse_train_radial, 'b-');
-
+title('Radial Basis functions: MSE');
+xlabel('alpha');
+ylabel('MSE');
+legend('Output testdata', 'Output trainingdata');
 
 figure();
 %plot of lowest, highest and best alpha
@@ -134,9 +147,94 @@ plot(x_test, y_our_test_radial(:,length(alpha)), 'g-');
 plot(x_test, y_our_test_radial(:,I), 'b-');
 
 plot(x_train, y_train, ' +');
+title('Radial Basis functions: learned functions');
+xlabel('x_{test}');
+ylabel('y_{test}');
+legend('lowest alpha', 'highest alpha', 'best alpha', 'trainingdata');
 
 
 figure
 
 semilogx(alpha, W_mean);
+title('Radial Basis functions: mean absolute weight values');
+xlabel('alpha');
+ylabel('W_{mean}');
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Local linear models
+
+
+d = 18;
+
+y_our_train_radial = zeros(length(x_train), d);
+y_our_test_radial = zeros(length(x_test), d);
+
+
+myh_train = ones(size(x_train))*linspace(-1, 1, d);
+myh_test = ones(size(x_test))*linspace(-1, 1, d);
+
+x_train_mat = [x_train]*ones(1,d);
+X_train = exp((-(x_train_mat-myh_train).^2)./((2/d).^2));
+X_train_r = x_train_mat.*exp((-(x_train_mat-myh_train).^2)./((2/d).^2));
+X_train = [X_train, X_train_r];
+
+
+x_test_mat = [x_test]*ones(1,d);
+X_test = exp((-(x_test_mat-myh_test).^2)./((2/d).^2));
+X_test_r = x_test_mat .* exp((-(x_test_mat-myh_test).^2)./((2/d).^2));
+X_test = [X_test, X_test_r];
+
+
+%output y berechnen
+for i=1:length(alpha)
+    W = inv(X_train'*X_train + alpha(i)^2*length(x_train)*eye(d*2))*X_train'*y_train;
+    
+    W_mean(i) = mean(abs(W));
+
+    y_our_train_radial(:,i) = X_train*W;
+
+    y_our_test_radial(:,i) = X_test*W;
+    
+end
+
+
+%MSE plotten:
+for i = 1:length(alpha)
+    mse_test_radial(i) = (y_our_test_radial(:,i) - y_test)' * (y_our_test_radial(:,i) - y_test) / length(y_test);
+    
+    mse_train_radial(i) = (y_our_train_radial(:,i) - y_train)' * (y_our_train_radial(:,i) - y_train) / length(y_our_train_radial);
+end
+
+figure
+
+semilogx(alpha, mse_test_radial, 'r-');
+hold on;
+semilogx(alpha, mse_train_radial, 'b-');
+title('Local linear models: MSE');
+xlabel('alpha');
+ylabel('MSE');
+legend('Output testdata', 'Output trainingdata');
+
+figure();
+%plot of lowest, highest and best alpha
+[Y,I] = min(mse_test_radial);
+
+plot(x_test, y_our_test_radial(:,1), 'r-');
+hold on;
+plot(x_test, y_our_test_radial(:,length(alpha)), 'g-');
+plot(x_test, y_our_test_radial(:,I), 'b-');
+
+plot(x_train, y_train, ' +');
+title('Local linear models: learned functions');
+xlabel('x_{test}');
+ylabel('y_{test}');
+legend('lowest alpha', 'highest alpha', 'best alpha', 'trainingdata');
+axis([-1 1 -25 20]);
+
+figure
+
+semilogx(alpha, W_mean);
+title('Local linear models: mean absolute weight values');
+xlabel('alpha');
+ylabel('W_{mean}');
