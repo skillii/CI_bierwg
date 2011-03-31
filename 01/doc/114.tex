@@ -2,12 +2,59 @@
 
 %nöhmes stuff:
 
+\paragraph{Regularized Regression Grundlagen}
 
+Folgende Fehlerfunktion soll minimal werden:
 
+$$ E(\vect{w}) = \frac{1}{N} \sum_{i=1}^N(y_i - \sum_{k=1}^d \Phi_k(x_i) w_k)^2 + \alpha^2 \sum_{k=1}^d w_k^2 $$
 
+Zuerst müssen die indizierten Variablen in Vektoren umgeschrieben werden:
 
+$$ \vect{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_N \end{bmatrix}, \; \vect{y} = \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_N \end{bmatrix}, \; \vect{w} = \begin{bmatrix} w_1 \\ w_2 \\ \vdots \\ w_d \end{bmatrix}, \; \vect{\Phi}(\vect{x}) = \begin{bmatrix} \Phi_1(\vect{x}) \\ \Phi_2(\vect{x}) \\ \vdots \\ \Phi_d(\vect{x}) \end{bmatrix} $$
 
+wobei $ \vect{x} \in M(N \times 1), \; \vect{y} \in M(N \times 1), \; \vect{w} \in M(d \times 1), \; \vect{\Phi}(\vect{x}) \in M(d \times 1) $.
 
+Nun können die Summen in Matrixform umgeschrieben werden (von innen nach aussen):
+
+$$ \sum_{k=1}^d \Phi_k w_k = \vect{\Phi}^T \cdot \vect{w}, \; \text{da} \begin{bmatrix} \Phi_1 && \Phi_2 && \hdots && \Phi_d \end{bmatrix} \cdot \begin{bmatrix} w_1 \\ w_2 \\ \vdots \\ w_d \end{bmatrix} = \Phi_1 w_1 + \Phi_2 w_2 + \hdots + \Phi_d w_d $$
+
+$$ \alpha^2 \sum_{k=1}^d w_k^2 = \alpha^2 \cdot \vect{w}^T \cdot \vect{w}, \; \text{aus dem selben Grund wie oben} $$
+
+Mit der gleichen Regel kann man auch die äußere Summe zusammenfassen:
+
+$$ \sum_{i=1}^N (y_i - \sum_{k=1}^{d} \Phi_k(x_i) w_k)^2 = (\vect{y} - \vect{\Phi}(\vect{x})^T \vect{w})^T (\vect{y} - \vect{\Phi}(\vect{x})^T \vect{w}) $$
+
+Also ergibt sich die gesamte Fehlerfunktion als:
+
+$$ E(\vect{w}) = \frac{1}{N} (\vect{y} - \vect{\Phi}(\vect{x})^T \vect{w})^T (\vect{y} - \vect{\Phi}(\vect{x})^T \vect{w}) + \alpha^2 \vect{w}^T \vect{w} $$
+
+Die Matrix $ \vect{\Phi}(\vect{x})^T $ wird im folgenden als Designmatrix $ \vect{X} $ abgekürzt und hat folgende Form:
+
+$$ \vect{X} = \vect{\Phi}(\vect{x})^T = \begin{bmatrix} \Phi_1(x_1) && \Phi_2(x_1) && \hdots && \Phi_d(x_1) \\  \Phi_1(x_2) && \Phi_2(x_2) && \hdots && \Phi_d(x_2) \\ \vdots && \ddots \\ \Phi_1(x_N) && \Phi_2(x_N) && \hdots && \Phi_d(x_N) \end{bmatrix} $$
+
+Ihre Dimension ist also $ \vect{X} \in M(N \times d) $.
+
+Um nun den Fehler zu minimieren, muss die Fehlerfunktion abgeleitet werden:
+
+$$ \frac{\partial E(\vect{w})}{\partial \vect{w}} = \frac{\partial}{\partial \vect{w}} \frac{1}{N} (\vect{y} - \vect{X} \vect{w})^T (\vect{y} - \vect{X} \vect{w}) + \alpha^2 \vect{w}^T \vect{w} $$
+
+Mit $ \frac{\partial \vect{w}^T \vect{w}}{\partial \vect{w}} = 2 \vect{w}^T $ (Matrix-Cookbook, (10)) ergibt sich (innere Ableitung nicht vergessen!):
+
+$$ \frac{\partial E(\vect{w})}{\partial \vect{w}} = - \frac{2}{N} (\vect{y} - \vect{X} \vect{w})^T \vect{X} + 2 \alpha^2 \vect{w}^T $$
+
+Um das Minimum zu finden, wird diese Ableitung jetzt 0 gesetzt und auf $\vect{w}$ umgeformt:
+
+$$ - \frac{2}{N} (\vect{y} - \vect{X} \vect{w})^T \vect{X} + 2 \alpha^2 \vect{w}^T = 0 $$
+$$ \frac{2}{N} (\vect{y} - \vect{X} \vect{w})^T \vect{X} = 2 \alpha^2 \vect{w}^T $$
+$$ (\vect{y} - \vect{X} \vect{w})^T \vect{X} = N \alpha^2 \vect{w}^T $$
+$$ (\vect{y}^T - \vect{w}^T \vect{X}^T) \vect{X} = N \alpha^2 \vect{w}^T $$
+$$ \vect{y}^T \vect{X} - \vect{w}^T \vect{X}^T \vect{X} = N \alpha^2 \vect{w}^T $$
+$$ \vect{w}^T \vect{X}^T \vect{X} + N \alpha^2 \vect{w}^T = \vect{y}^T \vect{X} $$
+$$ \vect{w}^T \vect{X}^T \vect{X} + \vect{w}^T N \alpha^2 = \vect{y}^T \vect{X} $$
+$$ \vect{w}^T (\vect{X}^T \vect{X} + N \alpha^2 \vect{I}) = \vect{y}^T \vect{X} $$
+$$ \vect{w}^T = \vect{y}^T \vect{X} (\vect{X}^T \vect{X} + N \alpha^2 \vect{I})^{-1} $$
+$$ \vect{w} = (\vect{X}^T \vect{X} + N \alpha^2 \vect{I})^{-1} \vect{X}^T \vect{y} $$
+%endlich!!! :)
 
 
 %tom stuff:

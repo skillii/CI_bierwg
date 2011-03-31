@@ -40,7 +40,7 @@ hmarginratio=2:1,% set margin ration (inner:outer for twoside) - (2:3 is default
 
 % master
 \usepackage{ifthen}% for optional parts
-\usepackage[latin1]{inputenc}% German special characters
+\usepackage[utf8]{inputenc}% German special characters
 \ifthenelse{\equal{\DocumentLanguage}{en}}{\usepackage[USenglish]{babel}}{}%
 \ifthenelse{\equal{\DocumentLanguage}{de}}{\usepackage[ngerman]{babel}}{}%
 \usepackage[%
