@@ -3,7 +3,7 @@
 \subsubsection{Aufgabenstellung:}
 
 
-Es sollen die Gewichtungsfaktoren für Polynome vom 0ten Grad bis zum 18ten Grad gefunden werden, dazu sind die 60 gegebenen X- und Y-Trainingswerte zu verwenden.
+Es sollen die Gewichtungsfaktoren fÃ¼r Polynome vom 0ten Grad bis zum 18ten Grad gefunden werden, dazu sind die 60 gegebenen X- und Y-Trainingswerte zu verwenden.
 
 
 Danach sind die Trainingspunkte, die Target-Funktion(y\_target) und die ``Lern-funktionen'' zu Auszugeben.
@@ -11,7 +11,7 @@ Danach sind die Trainingspunkte, die Target-Funktion(y\_target) und die ``Lern-f
 
 Die Basisfunktionen als Funktion von X ausgeben.
 
-Ausgeben des ``Mean Squared Error'' (MSE) für die Trainings- und Test- werte.
+Ausgeben des ``Mean Squared Error'' (MSE) fÃ¼r die Trainings- und Test- werte.
 
 
 \subsubsection{Plots \& Diskussion:}
@@ -33,7 +33,7 @@ Ausgeben des ``Mean Squared Error'' (MSE) für die Trainings- und Test- werte.
 \end{figure}
 
 In Abbildung \ref{fig:unscaled_learn_fct} sehen wir die Lernfunktionen.
-In Abb. \ref{fig:unscaled_learn_fct} reisen die Werte für Polynome höheren Grades am Ende des ``Plots'' sehr stark aus.
+In Abb. \ref{fig:unscaled_learn_fct} reisen die Werte fÃ¼r Polynome hÃ¶heren Grades am Ende des ``Plots'' sehr stark aus.
  Das Bild wird somit in Y-Richtung gequetscht wird, in Abb. \ref{fig:scal_learn_fct} das ganze noch einmal skaliert um mehr zu erkennen.
 
 \begin{figure}[hp!]
@@ -46,18 +46,18 @@ In Abb. \ref{fig:unscaled_learn_fct} reisen die Werte für Polynome höheren Grade
 
 
 
-Bei Funktionen mit höheren Polynomen ist die Funktion zwar sehr gut eingepasst an die Trainingspunkte, neigt aber zu starkem Überschwingen.
+Bei Funktionen mit hÃ¶heren Polynomen ist die Funktion zwar sehr gut eingepasst an die Trainingspunkte, neigt aber zu starkem Ãœberschwingen.
 Das sog. ``Overfitting'' tritt hier auf.
 \clearpage
 
 \begin{figure}[hp!]
 \begin{center}
  \includegraphics[width=1\textwidth]{./figures/1_1_1_MSE}
- \caption[Mean Square Error]{Mean Square Error für Trainings- und Test-Werte}
+ \caption[Mean Square Error]{Mean Square Error fÃ¼r Trainings- und Test-Werte}
 \label{fig:MSE}
 \end{center}
 \end{figure}
 
 Wie man in Abb. \ref{fig:MSE} sehen kann ist bereits bei einer Funktion mit Grad 8 der Fehler sehr gering,bei Grad 8 ist  
-Aufwand und Leistung am Besten. Es ist die Funktion nur für die Trainings-Werte 
-perfekt angepasst allerdings wird durch das ``OverFitting'' für alle anderen Werte der Fehler wieder größer.
+Aufwand und Leistung am Besten. Es ist die Funktion nur fÃ¼r die Trainings-Werte 
+perfekt angepasst allerdings wird durch das ``OverFitting'' fÃ¼r alle anderen Werte der Fehler wieder grÃ¶ÃŸer.
