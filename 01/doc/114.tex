@@ -64,3 +64,109 @@ $$ \vect{w} = (\vect{X}^T \vect{X} + N \alpha^2 \vect{I})^{-1} \vect{X}^T \vect{
 \paragraph{Polynomial Basis Functions}
 
 
+Wie in der Abbildung \ref{fig:poly_mse} zu sehen ist, ergibt sich ein minima des MSE der Testdaten
+bei $\alpha = 0.00015167$. Wie in der Abbildug \ref{fig:poly_learned} zu sehen ist, bewirkt ein höherer Wert von
+$\alpha$ ein Abflachen der Lernkurve. Bei kleineren Werten von $\alpha$ ist die Kurve weniger abgeflacht und
+folgt mehr den Trainigsdaten. Ein kleinerer Wert von $\alpha$ hat jedoch den entscheidenden Nachteil, dass ausserhalb
+des Bereichs der Trainingsdaten(auf der x-Achse), die Lernkurve sehr stark nach oben bzw. unten wegknickt.
+$\alpha$ vergrößert bei größeren Gewichten die Fehlerfunktion $E(x)$ und wirkt somit dem entgegen.
+
+Der mean squared error korrelliert sehr gut dem Mittelwert der absoluten Gewichte. Für Größere Werte von $\alpha$
+ergibt sich verbessert sich der MSE bei den Trainings- und Testdaten. Wird jedoch $\alpha$ zu groß gewählt, so steigt
+der MSE wieder.
+
+
+  \begin{center}
+	\includegraphics[width=15cm]{figures/114/poly_mse.png}
+	\captionof{figure}{Polynomial Basis Functions: Mean squared error, Minimum bei $\alpha = 0.00015167$}
+	\label{fig:poly_mse}
+  \end{center}
+
+  \begin{center}
+	\includegraphics[width=15cm]{figures/114/poly_learned.png}
+	\captionof{figure}{Polynomial Basis Functions: learned output function}
+	\label{fig:poly_learned}
+  \end{center}
+
+  \begin{center}
+	\includegraphics[width=15cm]{figures/114/poly_meanweight.png}
+	\captionof{figure}{Polynomial Basis Functions: mean absolute weight over $\alpha$}
+	\label{fig:poly_meanweight}
+  \end{center}
+
+
+\paragraph{Radial Basis Functions}
+
+Wie in der Abbildung \ref{fig:radial_mse} zu sehen ist, ergibt sich ein minima des MSE der Testdaten
+bei $\alpha = 0.021964$. Wie in der Abbildug \ref{fig:radial_learned} zu sehen ist, bewirkt ein höherer Wert von
+$\alpha$ keine wesentliche Verbesserung, so wie Beispielsweise bei den polynomialen Basisfunktionen.
+
+Der mean squared error korrelliert bei den Radialen Basisfunktionen gar nicht mit dem MSE der Testdaten, was
+auch nocheinmal zum Ausdruck bringt, dass der Trick mit dem $\alpha$ fast zu keiner Verbesserung führt.
+Eine mögliche Begründung dafür wäre, dass bei den Radialen Basisfunktionen auch ohne $\alpha$ die Lernkurve
+an den Rändern der Testdaten nur wenig wegknickt.
+
+
+  \begin{center}
+	\includegraphics[width=15cm]{figures/114/radial_mse.png}
+	\captionof{figure}{Radial Basis Functions: Mean squared error, Minimum bei $\alpha = 0.021964$}
+	\label{fig:radial_mse}
+  \end{center}
+
+  \begin{center}
+	\includegraphics[width=15cm]{figures/114/radial_learned.png}
+	\captionof{figure}{Radial Basis Functions: learned output function}
+	\label{fig:radial_learned}
+  \end{center}
+
+  \begin{center}
+	\includegraphics[width=15cm]{figures/114/radial_meanweight.png}
+	\captionof{figure}{Radial Basis Functions: mean absolute weight over $\alpha$}
+	\label{fig:radial_meanweight}
+  \end{center}
+
+
+
+\paragraph{Local linear models}
+
+
+Wie in der Abbildung \ref{fig:local_mse} zu sehen ist, ergibt sich ein minima des MSE der Testdaten
+bei $\alpha = 0.034891$. Wie in der Abbildug \ref{fig:local_learned} zu sehen ist, bewirkt ein höherer Wert von
+$\alpha$ ein Abflachen der Lernkurve. Bei kleineren Werten von $\alpha$ ist die Kurve deutlich weniger abgeflacht und
+folgt mehr den Trainigsdaten. Ein kleinerer Wert von $\alpha$ hat jedoch den entscheidenden Nachteil, dass ausserhalb
+des Bereichs der Trainingsdaten(auf der x-Achse) und sogar zwischen größeren Abständen
+zwischen den Trainingsdaten, die Lernkurve sehr stark nach oben bzw. unten wegknickt. Die Lernkurve für kleinere $\alpha$
+ist eigentlich fast unbrauchbar.
+$\alpha$ vergrößert bei größeren Gewichten die Fehlerfunktion $E(x)$ und wirkt somit dem entgegen.
+
+Der mean squared error korrelliert sehr gut dem Mittelwert der absoluten Gewichte. Für Größere Werte von $\alpha$
+ergibt sich verbessert sich der MSE bei den Trainings- und Testdaten. Wird jedoch $\alpha$ zu groß gewählt, so steigt
+der MSE wieder.
+
+
+  \begin{center}
+	\includegraphics[width=15cm]{figures/114/local_mse.png}
+	\captionof{figure}{Local linear models: Mean squared error, Minimum bei $\alpha = 0.034891$}
+	\label{fig:local_mse}
+  \end{center}
+
+  \begin{center}
+	\includegraphics[width=15cm]{figures/114/local_learned.png}
+	\captionof{figure}{Local linear models: learned output function}
+	\label{fig:local_learned}
+  \end{center}
+
+  \begin{center}
+	\includegraphics[width=15cm]{figures/114/local_meanweight.png}
+	\captionof{figure}{Local linear models: mean absolute weight over $\alpha$}
+	\label{fig:local_meanweight}
+  \end{center}
+
+
+\paragraph{Vergleich}
+
+Bei den angegebenen Trainings- und Testdaten konnte mithilfe der Polynimialen Basisfunktionen das Beste
+Ergebnis erzielt werden. Dabei Betrug der MSE ca. 0.189, hingegen bei den beiden anderen Verfahren ca. 0.2.
+Bei Poly Local linear Model führte der Term mit $\alpha$ zu einer deutlichen Verbesserung der Ergebnise, wobei
+man bei den Radialen Basisfunktionen, den $\alpha$ - Term auch weglassen könnte ohne deutliche schlechtere
+Ergebnise zu erzielen.

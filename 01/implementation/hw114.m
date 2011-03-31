@@ -52,6 +52,8 @@ for i = 1:length(alpha)
     
     mse_train_poly(i) = (y_our_train_poly(:,i) - y_train)' * (y_our_train_poly(:,i) - y_train) / length(y_our_train_poly);
 end
+[mini,i] = min(mse_test_poly);
+display(['poly: min_mse bei alpha=', num2str(alpha(i)), ' min_mse=', num2str(mini)]);
 
 figure
 
@@ -78,7 +80,7 @@ title('Polynomial Basis functions: learned functions');
 xlabel('x_{test}');
 ylabel('y_{test}');
 legend('lowest alpha', 'highest alpha', 'best alpha', 'trainingdata');
-axis([-1 1 -10 10]);
+axis([-1 1 -6 8]);
 
 
 figure
@@ -126,6 +128,9 @@ for i = 1:length(alpha)
     
     mse_train_radial(i) = (y_our_train_radial(:,i) - y_train)' * (y_our_train_radial(:,i) - y_train) / length(y_our_train_radial);
 end
+
+[mini,i] = min(mse_test_radial);
+display(['radial: min_mse bei alpha=', num2str(alpha(i)), ' min_mse=', num2str(mini)]);
 
 figure
 
@@ -205,6 +210,9 @@ for i = 1:length(alpha)
     
     mse_train_radial(i) = (y_our_train_radial(:,i) - y_train)' * (y_our_train_radial(:,i) - y_train) / length(y_our_train_radial);
 end
+
+[mini,i] = min(mse_test_radial);
+display(['local linear: min_mse bei alpha=', num2str(alpha(i)), ' min_mse=', num2str(mini)]);
 
 figure
 
