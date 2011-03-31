@@ -90,9 +90,12 @@ for i = 1:l
     
     y_basis = X_test*W2;
     
-    plot(x_basis, y_basis);
-    axis([-1 1 -1 1]);
+    my_plot3 = plot(x_basis, y_basis);
+    
     hold on;
+    set(my_plot3, 'Color', [1-i/(l+1), i/(l+1) , 1-i/(l+1)]);
+    axis([-1 1 -1 1]);
+    
 end
 
 

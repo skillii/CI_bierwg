@@ -53,6 +53,11 @@ end
 plot(x_test, y_target, 'b-');
 plot(x_train, y_train, ' +');
 
+title('Local Linear Models: Training data, Target Function, Learned Function for each d');
+xlabel('x');
+ylabel('y');
+legend('d=2','d=3','d=4','d=5','d=6','d=7','d=8','d=9','d=10','d=11','d=12','d=13','d=14','d=15','d=16','d=17','d=18','y_{target}','y_{train}','Location','EastOutside');
+
 
 %plot of basis functions
 
@@ -82,6 +87,10 @@ for d = [6 12 18]
         axis([-1 1 -1 1]);
         hold on;
     end
+    
+    title(['Local Linear Models: Basis Functions for d=', num2str(d)]);
+    xlabel('x');
+    ylabel('\Phi_k(x)');
 end
 
 
@@ -99,3 +108,8 @@ figure
 plot(2:d_max, mse_test(2:d_max), 'r-');
 hold on;
 plot(2:d_max, mse_train(2:d_max), 'b-');
+
+title('Local Linear Models: MSE on Training and Test Set');
+xlabel('l');
+ylabel('MSE');
+legend('MSE for Test Set', 'MSE for Training Set','Location','NorthWest');
