@@ -2,10 +2,10 @@
 
 
 \subsubsection{Aufgabenstellung:}
-Nun ist die Basisfunktion ist nun eine Gau\ss{} 'sche Glockenkurve die mit $\phi_k(x) = exp(-(x-\mu_k)^2 /\sigma^2 )$ gegeben ist.
+Nun ist die Basisfunktion eine Gau\ss{} 'sche Glockenkurve die mit $\phi_k(x) = exp(-(x-\mu_k)^2 /\sigma^2 )$ gegeben ist.
 Wobei $d=2:18$, $\sigma$ $= 2/d$ und $\mu =d$ schritten zwischen -1 und 1 entspricht.
 Es sind wieder  die Trainingspunkte, die Target-Funktion(y\_target) und die ``Lernfunktionen'' zu Auszugeben.
-Die Basisfunktion mit $d=6,12$ und $18$ als Funktion von x Ploten.
+Die Basisfunktion mit $d=6,12$ und $18$ als Funktion von x zu Ploten.
 Ausgeben des ``Mean Squared Error'' (MSE) für die Trainings- und Test- werte.
 
 
@@ -49,7 +49,8 @@ Wie man in Abb. \ref{fig:RBF_learn} sehen kann ist das ``Ausbrechen'' bei der Ra
 \end{figure}
 Man kann erkennen das auch hier bei höherer Ordnung die Steilheit zunimmt. Gau\ss{}'sche-funktionen neigen allerdings nicht zum ``ausbrechen''
 da sie wenn sie Richtung unendlich gehen keinen ``Schaden'' anrichten, da sie wieder zu ihrem Nullpunkt zurückkehren.
-
+Was sich auch in Abb. \ref{fig:RBF_MSE} zeigt, da hier der MSE der Test-Werte, bei hohem Grad nicht stark ansteigt wie in Bsp.1.1.1.
+ 
 
 \begin{figure}[hp!]
 \begin{center}

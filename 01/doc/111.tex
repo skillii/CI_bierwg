@@ -18,7 +18,7 @@ Ausgeben des ``Mean Squared Error'' (MSE) für die Trainings- und Test- werte.
 \begin{figure}[hp!]
 \begin{center}
  \includegraphics[width=0.99\textwidth]{./figures/1_1_1_unscaled_learn_fct}
- \caption[Unskalierte Lernfunktionen]{Unskalierte Lernfunktionen}
+ \caption[Lernfunktionen]{Lernfunktionen}
 \label{fig:unscaled_learn_fct}
 \end{center}
 \end{figure}
@@ -27,14 +27,14 @@ Ausgeben des ``Mean Squared Error'' (MSE) für die Trainings- und Test- werte.
 \begin{figure}[hp!]
 \begin{center}
  \includegraphics[width=1\textwidth]{./figures/1_1_1_scal_learn_fct}
- \caption[Skalierte Lernfunktionen]{Skalierte Lernfunktionen}
+ \caption[Vergrö\ss{}erter Ausschnitt der Lernfunktionen]{Vergrö\ss{}erter Ausschnitt der Lernfunktionen}
 \label{fig:scal_learn_fct}
 \end{center}
 \end{figure}
 
 In Abbildung \ref{fig:unscaled_learn_fct} sehen wir die Lernfunktionen.
 In Abb. \ref{fig:unscaled_learn_fct} reisen die Werte für Polynome höheren Grades am Ende des ``Plots'' sehr stark aus.
- Das Bild wird somit in Y-Richtung gequetscht wird, in Abb. \ref{fig:scal_learn_fct} das ganze noch einmal skaliert um mehr zu erkennen.
+ Das Bild wird somit in Y-Richtung gequetscht wird, in Abb. \ref{fig:scal_learn_fct} das ganze noch einmal mit einem  vergrö\ss{}erten Ausschnitt der Lernfunktionen um mehr zu erkennen.
 
 \begin{figure}[hp!]
 \begin{center}
@@ -43,8 +43,8 @@ In Abb. \ref{fig:unscaled_learn_fct} reisen die Werte für Polynome höheren Gra
 \label{fig:base_fct}
 \end{center}
 \end{figure}
-In Abb. \ref{fig:base_fct} kann man Sehen das Funktionen höherer Ordnung sehr stark einknicken. Das bedeutet das sich Funktionen höherer Ordnung 
-schneller bzw. stärker den Testdaten anpassen. Allerdings sollt hier ein Mittel gefunden werden, da die Testdaten ja auch nicht exakt und mit
+In Abb. \ref{fig:base_fct} kann man erkennen das Funktionen höherer Ordnung sehr stark einknicken. Das bedeutet das sich Funktionen höherer Ordnung 
+schneller bzw. stärker den Testdaten anpassen. Allerdings sollt hier ein Mittel gefunden werden, da die Testdaten ja auch nicht exakt, und mit
 Rauschen behaftet sind! 
 
 
@@ -61,6 +61,6 @@ Das sog. ``Overfitting'' tritt hier auf.
 \end{center}
 \end{figure}
 
-Wie man in Abb. \ref{fig:MSE} sehen kann ist bereits bei einer Funktion mit Grad 8 der Fehler sehr gering,bei Grad 8 ist  
+Wie man in Abb. \ref{fig:MSE} sehen kann ist bereits bei einer Funktion mit Grad 8 der Fehler sehr gering, bei Grad 8 ist  
 Aufwand und Leistung am Besten. Es ist die Funktion nur für die Trainings-Werte 
 perfekt angepasst allerdings wird durch das ``OverFitting'' für alle anderen Werte der Fehler wieder größer.
