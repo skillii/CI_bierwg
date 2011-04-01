@@ -77,7 +77,7 @@ hold on;
 plot(x_test, y_our_test_poly(:,length(alpha)), 'g-');
 plot(x_test, y_our_test_poly(:,I), 'b-');
 plot(x_train, y_train, ' +');
-plot(x_test, y_target, 'b-');
+plot(x_test, y_target, 'c-');
 title('Polynomial Basis functions: learned functions');
 xlabel('x_{test}');
 ylabel('y_{test}');
@@ -91,7 +91,7 @@ semilogx(alpha, W_mean);
 title('Polynomial Basis functions: mean absolute weight values');
 xlabel('alpha');
 ylabel('W_{mean}');
-sdf
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -152,12 +152,13 @@ plot(x_test, y_our_test_radial(:,1), 'r-');
 hold on;
 plot(x_test, y_our_test_radial(:,length(alpha)), 'g-');
 plot(x_test, y_our_test_radial(:,I), 'b-');
-
 plot(x_train, y_train, ' +');
+plot(x_test, y_target, 'c-');
+
 title('Radial Basis functions: learned functions');
 xlabel('x_{test}');
 ylabel('y_{test}');
-legend('lowest alpha', 'highest alpha', 'best alpha', 'trainingdata');
+legend('lowest alpha', 'highest alpha', 'best alpha', 'trainingdata', 'Targetfunktion');
 
 
 figure
@@ -234,12 +235,13 @@ plot(x_test, y_our_test_radial(:,1), 'r-');
 hold on;
 plot(x_test, y_our_test_radial(:,length(alpha)), 'g-');
 plot(x_test, y_our_test_radial(:,I), 'b-');
-
 plot(x_train, y_train, ' +');
+plot(x_test, y_target, 'c-');
+
 title('Local linear models: learned functions');
 xlabel('x_{test}');
 ylabel('y_{test}');
-legend('lowest alpha', 'highest alpha', 'best alpha', 'trainingdata');
+legend('lowest alpha', 'highest alpha', 'best alpha', 'trainingdata', 'Targetfunktion');
 axis([-1 1 -25 20]);
 
 figure
