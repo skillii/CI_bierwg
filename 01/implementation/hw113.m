@@ -53,10 +53,10 @@ end
 plot(x_test, y_target, 'b-');
 plot(x_train, y_train, ' +');
 
-title('Local Linear Models: Training data, Target Function, Learned Function for each d');
+title('Local Linear Models: Training data, Target Function Learned Function for each d');
 xlabel('x');
 ylabel('y');
-legend('d=2','d=3','d=4','d=5','d=6','d=7','d=8','d=9','d=10','d=11','d=12','d=13','d=14','d=15','d=16','d=17','d=18','y_{target}','y_{train}','Location','EastOutside');
+legend('d=2', 'd=3', 'd=4', 'd=5', 'd=6', 'd=7', 'd=8', 'd=9', 'd=10', 'd=11', 'd=12', 'd=13', 'd=14', 'd=15', 'd=16', 'd=17', 'd=18', 'y_{target}', 'y_{train}', 'Location', 'EastOutside');
 
 
 %plot of basis functions

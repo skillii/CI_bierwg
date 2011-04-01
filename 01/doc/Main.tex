@@ -69,6 +69,27 @@
 
 
 \begin{document}
+
+%listingstyle:
+\definecolor{orange}{rgb}{0.75,0.65,0}
+\definecolor{gruen}{rgb}{0,0.5,0}
+\definecolor{listinggray}{gray}{0.97}
+\definecolor{listingshadow}{gray}{0.2}
+\lstloadlanguages{Matlab}
+\lstset{frame=shadowbox,
+		rulesepcolor=\color{listingshadow},
+		numbers=left,
+		basicstyle=\scriptsize\ttfamily,
+		numberstyle=\tiny,
+		keywordstyle=\color{blue}\bfseries, % bold black keywords
+		identifierstyle=, % nothing happens
+		commentstyle=\color{gruen}, % comments
+		stringstyle=\color{orange}, % typewriter type for strings
+		showstringspaces=false,
+		tabsize=4,
+		backgroundcolor=\color{listinggray}
+        }
+
 % **************************************************************************************************
 % titlepage
 \input{./base/titlepage_\DocumentType}
@@ -87,6 +108,23 @@
 \input{112}
 \input{113}
 \input{114}
+
+\clearpage
+\newpage
+
+\chapter{Listings}
+\section{Polynomial basis functions}
+\lstinputlisting[language=matlab]{../implementation/hw111.m}
+\section{Radial basis functions}
+\lstinputlisting[language=matlab]{../implementation/hw112.m}
+\section{Local linear Models}
+\lstinputlisting[language=matlab]{../implementation/hw113.m}
+\section{Regularized Polynomial Regression}
+\lstinputlisting[language=matlab]{../implementation/hw114.m}
+
+
+
+
 
 % **************************************************************************************************
 % **************************************************************************************************
