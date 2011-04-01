@@ -1,3 +1,5 @@
+%1.1.4
+
 clc;
 close all;
 clear;
@@ -35,7 +37,7 @@ W_mean = zeros(1,length(alpha));
 
 %output y berechnen
 for i=1:length(alpha)
-    W = inv(X_train'*X_train + alpha(i)^2*length(x_train)*eye(l+1))*X_train'*y_train;
+    W = inv(X_train'*X_train + alpha(i)^2*length(x_train)*eye(l+1)) * X_train' * y_train;
     
     W_mean(i) = mean(abs(W));
     
@@ -50,7 +52,7 @@ end
 for i = 1:length(alpha)
     mse_test_poly(i) = (y_our_test_poly(:,i) - y_test)' * (y_our_test_poly(:,i) - y_test) / length(y_test);
     
-    mse_train_poly(i) = (y_our_train_poly(:,i) - y_train)' * (y_our_train_poly(:,i) - y_train) / length(y_our_train_poly);
+    mse_train_poly(i) = (y_our_train_poly(:,i) - y_train)' * (y_our_train_poly(:,i) - y_train) / length(y_train);
 end
 [mini,i] = min(mse_test_poly);
 display(['poly: min_mse bei alpha=', num2str(alpha(i)), ' min_mse=', num2str(mini)]);
@@ -74,12 +76,12 @@ plot(x_test, y_our_test_poly(:,1), 'r-');
 hold on;
 plot(x_test, y_our_test_poly(:,length(alpha)), 'g-');
 plot(x_test, y_our_test_poly(:,I), 'b-');
-
 plot(x_train, y_train, ' +');
+plot(x_test, y_target, 'b-');
 title('Polynomial Basis functions: learned functions');
 xlabel('x_{test}');
 ylabel('y_{test}');
-legend('lowest alpha', 'highest alpha', 'best alpha', 'trainingdata');
+legend('lowest alpha', 'highest alpha', 'best alpha', 'trainingdata', 'Targetfunktion');
 axis([-1 1 -6 8]);
 
 
@@ -89,9 +91,9 @@ semilogx(alpha, W_mean);
 title('Polynomial Basis functions: mean absolute weight values');
 xlabel('alpha');
 ylabel('W_{mean}');
+sdf
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Radial Basis
 d = 18;
@@ -111,7 +113,7 @@ X_test = exp((-(x_test_mat-myh_test).^2)./((2/d).^2));
 
 %output y berechnen
 for i=1:length(alpha)
-    W = inv(X_train'*X_train + alpha(i)^2*length(x_train)*eye(d))*X_train'*y_train;
+    W = inv(X_train'*X_train + alpha(i)^2*length(x_train)*eye(d)) * X_train' * y_train;
     
     W_mean(i) = mean(abs(W));
 
@@ -126,7 +128,7 @@ end
 for i = 1:length(alpha)
     mse_test_radial(i) = (y_our_test_radial(:,i) - y_test)' * (y_our_test_radial(:,i) - y_test) / length(y_test);
     
-    mse_train_radial(i) = (y_our_train_radial(:,i) - y_train)' * (y_our_train_radial(:,i) - y_train) / length(y_our_train_radial);
+    mse_train_radial(i) = (y_our_train_radial(:,i) - y_train)' * (y_our_train_radial(:,i) - y_train) / length(y_train);
 end
 
 [mini,i] = min(mse_test_radial);
@@ -165,7 +167,7 @@ title('Radial Basis functions: mean absolute weight values');
 xlabel('alpha');
 ylabel('W_{mean}');
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Local linear models
 
@@ -193,7 +195,7 @@ X_test = [X_test, X_test_r];
 
 %output y berechnen
 for i=1:length(alpha)
-    W = inv(X_train'*X_train + alpha(i)^2*length(x_train)*eye(d*2))*X_train'*y_train;
+    W = inv(X_train'*X_train + alpha(i)^2*length(x_train)*eye(d*2)) * X_train' * y_train;
     
     W_mean(i) = mean(abs(W));
 
@@ -208,7 +210,7 @@ end
 for i = 1:length(alpha)
     mse_test_radial(i) = (y_our_test_radial(:,i) - y_test)' * (y_our_test_radial(:,i) - y_test) / length(y_test);
     
-    mse_train_radial(i) = (y_our_train_radial(:,i) - y_train)' * (y_our_train_radial(:,i) - y_train) / length(y_our_train_radial);
+    mse_train_radial(i) = (y_our_train_radial(:,i) - y_train)' * (y_our_train_radial(:,i) - y_train) / length(y_train);
 end
 
 [mini,i] = min(mse_test_radial);
