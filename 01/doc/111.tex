@@ -3,18 +3,17 @@
 \subsubsection{Aufgabenstellung:}
 
 
-Es sollen die Gewichtungsfaktoren für Polynome vom 0ten Grad bis zum 18ten Grad gefunden werden, dazu sind die 60 gegebenen X- und Y-Trainingswerte zu verwenden.
+Es sollen die Gewichtungsfaktoren für Polynome vom 0ten Grad bis zum 18ten Grad gefunden werden, dazu sind die 60 gegebenen x- und y-Trainingswerte zu verwenden.
+
+Danach sind die Trainingspunkte, die Target-Funktion (y\_target) und die gelernten Funktionen auszugeben.
+
+Die Basisfunktionen sind als Funktion von x auszugeben.
+
+Ausgeben des ``Mean Squared Error'' (MSE) für die Trainings- und Testwerte.
 
 
-Danach sind die Trainingspunkte, die Target-Funktion(y\_target) und die ``Lern-funktionen'' zu Auszugeben.
+\subsubsection{Plots \& Diskussion}
 
-
-Die Basisfunktionen als Funktion von X ausgeben.
-
-Ausgeben des ``Mean Squared Error'' (MSE) für die Trainings- und Test- werte.
-
-
-\subsubsection{Plots \& Diskussion:}
 \begin{figure}[hp!]
 \begin{center}
  \includegraphics[width=0.99\textwidth]{./figures/1_1_1_unscaled_learn_fct}
@@ -33,8 +32,8 @@ Ausgeben des ``Mean Squared Error'' (MSE) für die Trainings- und Test- werte.
 \end{figure}
 
 In Abbildung \ref{fig:unscaled_learn_fct} sehen wir die Lernfunktionen.
-In Abb. \ref{fig:unscaled_learn_fct} reisen die Werte für Polynome höheren Grades am Ende des ``Plots'' sehr stark aus.
- Das Bild wird somit in Y-Richtung gequetscht wird, in Abb. \ref{fig:scal_learn_fct} das ganze noch einmal mit einem  vergrö\ss{}erten Ausschnitt der Lernfunktionen um mehr zu erkennen.
+In Abb. \ref{fig:unscaled_learn_fct} reissen die Werte für Polynome höheren Grades am Ende des Plots sehr stark aus.
+Das Bild wird somit in y-Richtung gequetscht, Abb. \ref{fig:scal_learn_fct} entspricht einer skalierten Version von Abb. \ref{fig:unscaled_learn_fct} mit einem  vergrö\ss{}erten Ausschnitt der Lernfunktionen, um sie besser zu erkennen.
 
 \begin{figure}[hp!]
 \begin{center}
@@ -43,13 +42,11 @@ In Abb. \ref{fig:unscaled_learn_fct} reisen die Werte für Polynome höheren Gra
 \label{fig:base_fct}
 \end{center}
 \end{figure}
-In Abb. \ref{fig:base_fct} kann man erkennen das Funktionen höherer Ordnung sehr stark einknicken. Das bedeutet das sich Funktionen höherer Ordnung 
-schneller bzw. stärker den Testdaten anpassen. Allerdings sollt hier ein Mittel gefunden werden, da die Testdaten ja auch nicht exakt, und mit
+In Abb. \ref{fig:base_fct} kann man erkennen, dass Funktionen höherer Ordnung sehr stark einknicken. Das bedeutet, dass sich Funktionen höherer Ordnung 
+schneller bzw. stärker den Testdaten anpassen. Allerdings sollte hier ein Mittel gefunden werden, da die Testdaten auch nicht exakt sind und mit
 Rauschen behaftet sind! 
 
-
-
-Bei Funktionen mit höheren Polynomen ist die Funktion zwar sehr gut eingepasst an die Trainingspunkte, neigt aber zu starkem Überschwingen.
+Bei Funktionen mit Polynomen höheren Grades ist die Funktion zwar sehr gut an die Trainingspunkte eingepasst, neigt aber zu starkem Überschwingen.
 Das sog. ``Overfitting'' tritt hier auf.
 
 
@@ -62,5 +59,5 @@ Das sog. ``Overfitting'' tritt hier auf.
 \end{figure}
 
 Wie man in Abb. \ref{fig:MSE} sehen kann ist bereits bei einer Funktion mit Grad 8 der Fehler sehr gering, bei Grad 8 ist  
-Aufwand und Leistung am Besten. Es ist die Funktion nur für die Trainings-Werte 
-perfekt angepasst allerdings wird durch das ``OverFitting'' für alle anderen Werte der Fehler wieder größer.
+Aufwand und Leistung im besten Verhältnis. Die Funktion ist für die Trainingswerte 
+perfekt angepasst, allerdings wird durch das ``Overfitting'' für alle anderen Werte der Fehler wieder größer.
