@@ -10,15 +10,18 @@ alpha = 0.5;
 figure(1);
 figure(2);
 
+
 for i = 1:length(eta)
     [weight, error] = gradientDescentAdaptiveHw2(w0, 100, eta(i), alpha);
     plotErrorFunction(weight);
-    
+
     figure(1);
     my_plot = plot(error);
     hold on;
     
     set(my_plot, 'Color', [i/length(eta), i/length(eta) , 1-i/length(eta)]);
+    
+
     
 end
 
