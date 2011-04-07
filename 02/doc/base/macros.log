@@ -1,0 +1,25 @@
+This is pdfTeXk, Version 3.1415926-1.40.9 (Web2C 7.5.7) (format=latex 2010.3.26)  15 APR 2010 22:42
+entering extended mode
+ %&-line parsing enabled.
+**macros.tex
+(./macros.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, pinyin, bulgarian, russian, ukrainian, german-x-2008-06-18, ngerman
+-x-2008-06-18, german, ngerman, ukenglish, loaded.
+)
+! Emergency stop.
+<*> macros.tex
+              
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 63 strings out of 494760
+ 559 string characters out of 1176822
+ 47785 words of memory out of 3000000
+ 3367 multiletter control sequences out of 10000+50000
+ 3640 words of font info for 14 fonts, out of 3000000 for 5000
+ 220 hyphenation exceptions out of 8191
+ 7i,0n,6p,149b,8s stack positions out of 5000i,500n,10000p,200000b,50000s
+No pages of output.
