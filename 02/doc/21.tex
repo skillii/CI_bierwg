@@ -1,0 +1,11 @@
+Folgende Funktion ist gegeben:
+
+$$ f(w_1, w_2) = -2 e^{-20(0.5(w_1-1)^2+(w_2-1)^2)} - e^{-0.1(4(w_1+1)^2 + 0.5w_2^2)} $$
+
+Für den Gradient Descent Algorithmus wird die Ableitung dieses Ausdrucks gebraucht:
+
+$$ grad(f) = \begin{bmatrix} \frac{\partial f}{\partial w_1} \\ \frac{\partial f}{\partial w_2} \end{bmatrix} = \begin{bmatrix} 40 (w_1 - 1) e^{-20(0.5(w_1-1)^2+(w_2-1)^2)} + 0.8 (w_1 + 1) e^{-0.1(4(w_1+1)^2 + 0.5w_2^2)} \\ 80 (w_2 - 1) e^{-20(0.5(w_1-1)^2+(w_2-1)^2)} + 0.1 w_2 e^{-0.1(4(w_1+1)^2 + 0.5w_2^2)} \end{bmatrix} $$
+
+Für den Standard Gradient Descent Algorithmus gilt folgende Regel für die Berechnung der Gewichte $w_1$ und $w_2$ (dargestellt durch den Vektor $ \vect{w} = \begin{bmatrix} w_1 \\ w_2 \end{bmatrix} $):
+
+$$ \vect{w_{neu}} = \vect{w} - \eta grad(f) $$
