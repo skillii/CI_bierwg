@@ -28,6 +28,6 @@ disp(['fraction: ', num2str(fraction), '%']);
 surf(0:40, 0:40, minf);
 
 title('Effect of local Minima (Gradient Descent) for different w_0 = [-2+0.1i, -2+0.1j]');
-xlabel('w0');
-ylabel('w1');
+xlabel('w_1');
+ylabel('w_2');
 zlabel('Error');
