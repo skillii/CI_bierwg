@@ -1,0 +1,4 @@
+function [output, z, a1, a2] = feedforwardNN(w, x)
+
+
+
