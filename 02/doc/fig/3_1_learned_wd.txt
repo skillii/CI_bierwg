@@ -1,0 +1,1 @@
+minimum mse is 0.20024 with alpha=0.99
