@@ -1,10 +1,10 @@
-function [dw] = backpropNNSingle(w, x, y)
+ function [dw] = backpropNNSingle(w, x, y)
 
 
 W1 = reshape(w(1:12), 4,3)';
 W2 = reshape(w(13:17), 1,5)';
 
-sigma = @(x) 1./(1+exp(x));
+sigma = @(x) 1./(1+exp(-x));
 dsigma = @(x) (1-sigma(x)).*sigma(x);
 
 
@@ -13,10 +13,10 @@ dsigma = @(x) (1-sigma(x)).*sigma(x);
 
 
 d2 = dsigma(a2)*2*(o-y);
-d1 = dsigma(a1)*sum(W2(1:4)*d2);
+
+d1 = dsigma(a1)'.*W2(1:4).*d2;
 
 dw = zeros(17,1);
 
-
 dw(13:17) = d2*[z 1];
-dw(1:12) = [x(:);1]*d1;
+dw(1:12) = [x(1)*d1; x(2)*d1; 1*d1];

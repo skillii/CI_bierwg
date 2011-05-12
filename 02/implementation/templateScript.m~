@@ -8,31 +8,79 @@ load('backprop.mat');
 figure;
 surf(XX,YY, double(reshape(Ytest, 30, 30)));
 
-w = randn(17,1);
+
 
 eta = 1.0;
+numiter = 50;
+numtrials = 10;
 
-for i = 1:1000
-    [dw] = backpropNNFull(w, X, Y);
+e = zeros(numiter+1, numtrials);
+
+w0 = zeros(17,numtrials);
+w10 = zeros(17,numtrials);
+w100 = zeros(17,numtrials);
+w300 = zeros(17,numtrials);
+w1000 = zeros(17,numtrials);
+
+for trial = 1:numtrials
+
+    w = randn(17,1);
     
-    [o] = feedforwardNN(w, X);
-    e1 = (o-Y)'*(o-Y);
-    
-    new_w = eta-dw*eta;
-    
-    [o] = feedforwardNN(new_w, X);
-    e2 = (o-Y)'*(o-Y);
-    
-    if(e
+    w0(:,trial) = w;
+
+    for i = 1:numiter
+        [dw] = backpropNNFull(w, X, Y);
+
+        [o] = feedforwardNN(w, X);
+        e(i, trial) = (o-Y)'*(o-Y);
+
+        new_w = w-dw*eta;
+
+        [o] = feedforwardNN(new_w, X);
+        e(i+1, trial) = (o-Y)'*(o-Y);
+
+        if(e(i+1, trial) <= e(i, trial))
+            w = new_w;
+            eta = eta*1.05;
+        else
+            eta = eta*0.7;
+        end
+        
+        
+        if(i == 10), w10(:,trial) = w; end
+        if(i == 100), w100(:,trial) = w; end
+        if(i == 300), w300(:,trial) = w; end
+        if(i == 1000), w1000(:,trial) = w; end
+        
+    end
+    figure
+    plot(0:numiter, e);
+    hold on;
 end
 
 
-Otest = zeros(length(XX), 1);
+Otest = zeros(length(Xtest), 1);
 
 % Now make surface plot of learned function
-for i = 1:length(XX)
+for i = 1:length(Xtest)
     Otest(i) = feedforwardNN(w, Xtest(i,:));
 end
 
 figure;
 surf(XX,YY, reshape(Otest, 30, 30));
+
+
+
+
+[~,besttrial] = min(e(1000, :)');
+[~,worsttrial] = max(e(1000, :)');
+
+% Now make surface plot of learned function
+for i = 1:length(Xtest)
+    Otest(i) = feedforwardNN(w:,, Xtest(i,:));
+end
+
+figure;
+surf(XX,YY, reshape(Otest, 30, 30));
+
+
