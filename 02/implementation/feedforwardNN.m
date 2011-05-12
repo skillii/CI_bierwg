@@ -1,6 +1,6 @@
 function [output, z, a1, a2] = feedforwardNN(w, x)
 
- sigma = @(x) 1./(1+exp(-x));
+sigma = @(x) 1./(1+exp(-x));
 
 x_size = size(x);
 
