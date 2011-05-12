@@ -76,7 +76,7 @@ best_alpha = alpha(min_index);
 disp(['minimum mse is ' num2str(mse_min) ' with alpha=' num2str(best_alpha)]);
 
 figure;
-plot(x_test, y_target, 'k--', x_test, y_learned(1, :), 'b-', x_test, y_learned(min_index, :), 'g-', x_test, y_learned(end, :), 'r-');
+plot(x_test, y_target, 'k--', x_test, y_learned(1, :), 'b-', x_test, y_learned(end, :), 'g-', x_test, y_learned(min_index, :), 'r-');
 title('Learned Functions for lowest/highest/best alpha');
 xlabel('x');
 ylabel('y');
