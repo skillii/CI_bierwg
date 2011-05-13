@@ -1,5 +1,32 @@
 \subsection{Backpropagation for a simple network}
 
+\subsubsection{Formeln für Forwardfeed}
+
+Zuerst werden die Eingänge entsprechend der W(1)-Matrix gewichtet und aufsummiert.
+\begin{equation}
+\vect{a}^{(1)} = [\vect{x},1] * \vect{W}^{(1)}
+\end{equation}
+
+Die Summe der gewichteten Eingänge wird anschließend durch die Aktivierungsfunktion $\sigma(x)$ geschickt.
+
+\begin{equation}
+\vect{z} = \sigma(\vect{a}^{(1)})
+\end{equation}
+
+Anschließend wird werden die Ausgänge der Neuronen (z) mit der W(2)-Matrix gewichichtet und aufsummiert:
+
+\begin{equation}
+ \vect{a}^{(2)} = [z,1] * \vect{W}^{(2)}
+\end{equation}
+
+Die Summe der gewichteten Neuronenausgänge im Hidden Layer wird anschließend wieder durch die Aktivierungsfunktion $\sigma(x)$ geschickt.
+\begin{equation}
+ output = \sigma(\vect{a}^{(2)})
+\end{equation}
+
+
+
+
 \begin{figure}[hp!]
 \begin{center}
  \includegraphics[width=0.99\textwidth]{./figures/1/error}
