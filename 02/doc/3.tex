@@ -52,4 +52,15 @@ early stopping trained NN with 40 neurons: 0.137280 mse on training set, 0.23238
 
 \subsubsection{Comparison}
 
-blah blah blah
+\paragraph{Different Number of Neurons}
+
+Bei unterschiedlichen Anzahlen von Neuronen treten die genannten Effekte auf: sind die Neuronen zu wenig, kann die geforderte Funktion nur schlecht angenähert werden. Ist die Anzahl der Neuronen zu hoch, kommt es zu Overfitting. Im Beispiel gibt es ein Optimum hinsichtlich der Anzahl der Neuronen, welches bei 6 Neuronen liegt (siehe Abb. \ref{fig:3_mse_test}). Bei den angegebenen Neuronenanzahlen erreicht das NN mit 8 Neuronen den minimalen MSE von ca. 0.21.
+
+\paragraph{Weight Decay}
+
+Für den richtigen Regularisierungsfaktor $\alpha$ wurden bessere Ergebnisse erzielt als mit der vorherigen Methode. Es muss jedoch für jeden möglichen Faktor $\alpha$ das gesamte NN trainiert werden, was sehr zeitaufwändig ist. Durch den Regularisierungsfaktor verhindert man den Overfitting-Effekt. Mit Weight Decay erreicht man einen minimalen MSE von ca. 0.2.
+
+\paragraph{Early Stopping}
+
+Early Stopping erzielt etwas schlechtere Ergebnisse als Weight Decay, dafür muss nur ein NN komplett trainiert werden, und ein weiteres NN nur bis zur optimalen Epoche. Dadurch verringert sich die Rechenzeit drastisch. Mit Early Stopping erreicht man einen minimalen MSE von ca. 0.23.
+
