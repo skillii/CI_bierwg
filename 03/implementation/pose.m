@@ -9,6 +9,7 @@ load('faces.mat');
 % 4... Target = sunglasses;
 targetIndex = 2; 
 
+%create a matrix which includes 
 targetPose1 = full(ind2vec(target2(:, targetIndex)));
 
 
@@ -18,7 +19,10 @@ targetPose1 = full(ind2vec(target2(:, targetIndex)));
 
 % Set the number of hidden neurons
 nHiddenNeurons = 6;
-net = newff(minmax(input1), [nHiddenNeurons, 4], {'logsig', 'logsig'}, 'trainscg');
+nOutputNeurons = 4;
+
+%create a new feed-forward Network
+net = newff(minmax(input1), [nHiddenNeurons, nOutputNeurons], {'logsig', 'logsig'}, 'trainscg');
 
 net.performFcn = 'mse';
 net.trainParam.epochs = 300;
@@ -31,16 +35,10 @@ net = init(net);
 
 [net,tr_2hu] = train(net, input1, targetPose1);
 
-% Calculate the mean classification error on the training set:
 
+%calculate output of learned network, supplied with training data
 class_learned = sim(net, input1);
-
-realT = targetPose1;
 learnedT = hardlim(class_learned - 0.5);
-
-% error = sum(vec2ind(realT) ~= vec2ind(learnedT)) / size(realT, 2);
-% 
-% fprintf('Mean classification error on training set: %f\n', error);
 
 
 
@@ -57,15 +55,15 @@ image = uint8(reshape(image, 30, 32));
     
 imshow(image);
 
+
 % plot weights of all hidden neurons
 
+figure;
 for neuron = 1:nHiddenNeurons
-
-    figure;
+    subplot(3,2,neuron);
     hiddenW1 = reshape(net.IW{1}(neuron, :), 30, 32);
     imagesc(hiddenW1); 
     colormap(gray);
     title(['weights for hidden neuron ' num2str(neuron)]);
-
 end
 
