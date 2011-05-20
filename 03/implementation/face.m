@@ -49,14 +49,14 @@ end
 
 figure
 hist(mse_train_vect,10)
-xlabel('iteration');
-ylabel('MSE');
+xlabel('MSE');
+ylabel('count');
 title('MSE on train-data');
 
 figure
 hist(mse_test_vect,10)
-xlabel('iteration');
-ylabel('MSE');
+xlabel('MSE');
+ylabel('count');
 title('MSE on test-data');
 
 [~, best_net] = min(mse_test_vect);

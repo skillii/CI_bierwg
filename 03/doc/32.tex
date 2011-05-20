@@ -1,9 +1,28 @@
 \subsection{Face Recognition}
 
+Im Histogramm über dem MSE erkennt man, dass der MSE stark von den Anfangsgewichten abhängt.
+Wie zu erwarten war der MSE bei den Testdaten etwas größer als bei den Trainingsdaten.
 
 
 
-In der Abbildung \ref{fig:face_false_wrong}
+
+\begin{figure}[hp!]
+\begin{center}
+ \includegraphics[width=0.5\textwidth]{./figures/3_2_hist_test}
+ \caption{Histogramm vom MSE über den Testdaten}
+\label{fig:face_false_wrong}
+\end{center}
+\end{figure}
+
+\begin{figure}[hp!]
+\begin{center}
+ \includegraphics[width=0.5\textwidth]{./figures/3_2_hist_train}
+ \caption{Histogramm vom MSE über den Trainingsdaten}
+\label{fig:face_false_wrong}
+\end{center}
+\end{figure}
+
+
 
 \begin{figure}[hp!]
 \begin{center}
@@ -12,3 +31,13 @@ In der Abbildung \ref{fig:face_false_wrong}
 \label{fig:face_false_wrong}
 \end{center}
 \end{figure}
+
+In der Abbildung \ref{fig:face_false_wrong} wurden einige falsch und korrekt klassifizierte Bilder dargestellt.
+Faktoren, die die Klassifikationsperformance verschlechtern, sind unserer Meinung Artefakte im Hintergrund, wie 
+es Beispielsweise in Abbildung \ref{fig:face_false_wrong} Spalte 3 Zeile 2 zu erkennen ist.
+Bei den mittleren Bildern in der ersten Zeile ist unserer Meinung die schräge Blickrichtung Schuld an der falschen
+Klassifizierung. Zwei falsch klassifizierte Bilder waren auch deutlich dunkler als die anderen Bilder. Ein weiterer
+Einflussfaktor für eine falsche Klassifizierung ist auch, wenn sich der Kopf der Person nicht genau im Mittelpunkt
+des Bildes befindet.
+
+

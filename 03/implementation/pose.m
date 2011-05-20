@@ -9,7 +9,6 @@ load('faces.mat');
 % 4... Target = sunglasses;
 targetIndex = 2; 
 
-%create a matrix which includes 
 targetPose1 = full(ind2vec(target2(:, targetIndex)));
 
 
