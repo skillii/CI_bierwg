@@ -37,18 +37,18 @@ x2 = w' * dataset.X_2;
 
 % plot data points
 figure;
-plot(x1, 0, 'gx');
+plot(x1, zeros(size(x1)), 'gx');
 hold on;
-plot(x2, 0, 'rx');
+plot(x2, zeros(size(x2)), 'rx');
 title('Data Points transformed to 1dimensional Space with LDA');
 xlabel('$\hat{x}$', 'interpreter', 'latex');
 legend('Class 1', 'Class 2');
 
 % plot histograms
 figure;
-hist(x1);
+hist(x1, 20);
 hold on;
-hist(x2);
+hist(x2, 20);
 h = findobj(gca, 'Type', 'patch');
 set(h(1), 'FaceColor', 'g');
 set(h(2), 'FaceColor', 'r');
@@ -58,10 +58,12 @@ ylabel('# of Elements');
 legend('Class 1', 'Class 2');
 
 % find treshold and perform classification
-[bins, xout] = hist([x1 x2]);
+[bins, xout] = hist([x1 x2], 30);
 [~, peak_pos] = findpeaks(bins);
 [~, treshold_index] = min(bins(peak_pos(1):peak_pos(end)));
 treshold = xout(treshold_index + peak_pos(1) - 1);
+
+plot([treshold treshold], [0 max(bins)], 'k:');
 
 cperf1 = sum(x1 < treshold) / numel(x1);
 cperf2 = sum(x2 > treshold) / numel(x2);
@@ -107,18 +109,18 @@ x2 = w' * dataset.X_2;
 
 % plot data points
 figure;
-plot(x1, 0, 'gx');
+plot(x1, zeros(size(x1)), 'gx');
 hold on;
-plot(x2, 0, 'rx');
+plot(x2, zeros(size(x2)), 'rx');
 title('Data Points transformed to 1dimensional Space with Fisher-LDA');
 xlabel('$\hat{x}$', 'interpreter', 'latex');
 legend('Class 1', 'Class 2');
 
 % plot histograms
 figure;
-hist(x1);
+hist(x1, 20);
 hold on;
-hist(x2);
+hist(x2, 20);
 h = findobj(gca, 'Type', 'patch');
 set(h(1), 'FaceColor', 'g');
 set(h(2), 'FaceColor', 'r');
@@ -128,10 +130,12 @@ ylabel('# of Elements');
 legend('Class 1', 'Class 2');
 
 % find treshold and perform classification
-[bins, xout] = hist([x1 x2]);
+[bins, xout] = hist([x1 x2], 30);
 [~, peak_pos] = findpeaks(bins);
 [~, treshold_index] = min(bins(peak_pos(1):peak_pos(end)));
 treshold = xout(treshold_index + peak_pos(1) - 1);
+
+plot([treshold treshold], [0 max(bins)], 'k:');
 
 cperf1 = sum(x1 < treshold) / numel(x1);
 cperf2 = sum(x2 > treshold) / numel(x2);
