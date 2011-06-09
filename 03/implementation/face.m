@@ -49,14 +49,14 @@ end
 
 figure
 hist(mse_train_vect,10)
-xlabel('iteration');
-ylabel('MSE');
+xlabel('MSE');
+ylabel('iteration');
 title('MSE on train-data');
 
 figure
 hist(mse_test_vect,10)
-xlabel('iteration');
-ylabel('MSE');
+xlabel('MSE');
+ylabel('iteration');
 title('MSE on test-data');
 
 [~, best_net] = min(mse_test_vect);
@@ -89,6 +89,7 @@ fprintf('Classification rate : %f\n', rate(1));
 numfalseplots = min([10, sum(false_classified_log)]);
 figure;
 
+sum(false_classified_log)
 % % plot first image of test set
 for k = 1:numfalseplots
 subplot(4,5, k);
