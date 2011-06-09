@@ -1,0 +1,31 @@
+\section{LDA}
+
+Nachdem das 2 layer feed-forward neural network mit 6 hidden units und 300 Epochen trainiert wurde, konnte
+eine Classifizierungsrate von 100\% erreicht werden.
+
+Hier die Confusion Matrix, wobei man erkennt, dass es sich bei der Matrix um eine Diagonalmatrix handelt. Das
+bedeutet, dass alle Bilder korrekt klassifiziert wurden.
+\begin{verbatim}
+ confusion_matrix =
+   141     0     0     0
+     0   141     0     0
+     0     0   138     0
+     0     0     0   144
+\end{verbatim}
+
+In Abbildung \ref{fig:pose_weights} wurden die Gewichte der hidden neurons dargestellt. Ein hellerer Pixelwert
+entspricht dabei einem größerem Gewichtswert.
+Mit der Außnahme von Neuron 3 konzentrieren sich die Bereiche mit den größeren Gewichten vorüberwiegend
+auf den Bereich in dem sich das Gesicht befindet. Bei Neuron 3 sind viele Gewichte im Bereich des Hintergrunds
+relativ hell. Die verschiedenen Neuronen dürften sich also auf unterschiedliche Bereiche des Gesichts konzentrieren.
+\begin{figure}[hp!]
+\begin{center}
+ \includegraphics[width=0.6\textwidth]{./figures/3_1_weights}
+ \caption{Plots of the weights of the hidden neurons}
+\label{fig:pose_weights}
+\end{center}
+\end{figure}
+
+
+
+
