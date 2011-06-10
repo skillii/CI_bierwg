@@ -19,7 +19,7 @@ Um die Projektion zu erhalten muss man die Spalte der Eigenvektoren, die Äquiva
   \end{center}
 \end{figure}
 Abbildung~\ref{fig:4_components} zeigt die Wolke aus den Punkten, wobei die Punkte der beiden Klassen getrennt dargestellt werden, und die zu den Daten gehörenden Hauptkomponenten.
-Abbildung~\ref{fig:4_components_zoom} zeigt das selbe Bild nur etwas Vergrößert.\newline
+Abbildung~\ref{fig:4_components_zoom} zeigt das selbe Bild nur etwas Vergrößert. Die Hauptrichtungen, wie man einigermaßen erkennen kann sind orthogonal zueinander.\newline
  
 \begin{figure}[h!]
   \begin{center}
@@ -38,7 +38,7 @@ Abbildung~\ref{fig:4_components_zoom} zeigt das selbe Bild nur etwas Vergrößer
 \end{figure}
 
 
-Durch die PCA können die Daten nicht ihn ihr Wahrscheinlichkeitsverteilung beeinflusst werden.
+Die Kovarianzmatrix ( $S_P = EV' * C_X * EV$ ) ist nach der PCA eine Diagonal-matrix. Die Werte sind nach der PCA dekorreliert aber nicht normalverteilt, da sie vor der Transformation auch nicht normalveteilt waren.\newline
 
 Unser Threshold berechnet sich in unserem Beispiel zu -1.1983 die Performance liegt bei 88.5\% ( 81.6\% für die erste Klasse und 95.4\% für die Zweite Klasse).
 
