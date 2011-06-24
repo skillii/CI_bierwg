@@ -44,7 +44,9 @@ Mittels der Bayes Klassifikation lässt sich aufgrund der Priorwahrscheinlichkei
 Die gute Klassifikationsperformance beruht aber eigentlich nur darauf, dass die meisten Daten LOS sind und nur
 wenige NLOS sind. Währe die Priorwahrscheinlichkeit für NLOS und LOS gleich, würde man deutlich schlechtere Ergebnise
 erzielen.
-\item
+\item Bei der Bayes-Klassifikation wandert die Grenze für die Klassifikation weiter nach links. 
+Die Bayes-Klassifikation unterscheidet sich von der ML-Klassifikation nur dadurch, dass die Priorwahrscheinlichkeit
+noch miteinfließt. Diese Verbesserung vergrößert den Rechenaufwand nahezu gar nicht.
 
 
 
@@ -53,7 +55,7 @@ erzielen.
 
 \begin{figure}[ht!]
  \centering
- \includegraphics{./figures/5_1_1_estimation.png}
+ \includegraphics[width=17cm]{./figures/5_1_1_estimation.png}
  % 5_1_1_trainingdata.png: 561x420 pixel, 90dpi, 15.83x11.85 cm, bb=0 0 449 336
  \caption{Estimation of PDF-Parameters}
  \label{abb:estimation}
@@ -62,7 +64,7 @@ erzielen.
 
 \begin{figure}[ht!]
  \centering
- \includegraphics{./figures/5_1_1_ml.png}
+ \includegraphics[width=14cm]{./figures/5_1_1_ml.png}
  % 5_1_1_trainingdata.png: 561x420 pixel, 90dpi, 15.83x11.85 cm, bb=0 0 449 336
  \caption{ML-Klassifikation}
  \label{abb:ml}
@@ -70,7 +72,7 @@ erzielen.
 
 \begin{figure}[ht!]
  \centering
- \includegraphics{./figures/5_1_1_bayes.png}
+ \includegraphics[width=14cm]{./figures/5_1_1_bayes.png}
  % 5_1_1_trainingdata.png: 561x420 pixel, 90dpi, 15.83x11.85 cm, bb=0 0 449 336
  \caption{ML-Klassifikation}
  \label{abb:bayes}
