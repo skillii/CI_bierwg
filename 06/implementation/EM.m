@@ -4,7 +4,7 @@ function [alpha, mu, Sigma, L] = EM(X, M, alpha_0, mu_0, Sigma_0, max_iter)
 %  size(mu) = M,size(X,2)
 %  size(Sigma) = size(X,2),size(X,2),M
 
-min_diff = 1e-6;  % minimum difference for detecting convergence
+min_diff = 1e-4;  % minimum difference for detecting convergence
 
 alpha = alpha_0;
 mu = mu_0;
