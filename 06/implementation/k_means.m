@@ -4,18 +4,24 @@ function [mu, D] = k_means(X, M, mu_0, max_iter)
 %   asdf
 length = size(X,1);
 
-D = zeros(length,M);
-mu = mu_0
+min_diff = 1e-4;  % minimum difference for detecting convergence
+
+Dmat = zeros(length,M);
+D = zeros(max_iter,1);
+mu = mu_0;
+
+last_mu = mu;
 
   for i = 1:max_iter
     %calc distances for all points to all centers
     for j = 1:M
-      D(:,j) = ((X-ones(length,2)*[mu(j,1) 0; 0 mu(j,2)]).^2)*[1 1]';
+      Dmat(:,j) = ((X-ones(length,2)*[mu(j,1) 0; 0 mu(j,2)]).^2)*[1 1]';
     end
-    D = D.^(1/2);
+    Dmat = Dmat.^(1/2);
     
     %get the minimum distances 
-    [~, ind] = min(D');
+    [val, ind] = min(Dmat');
+    D(i) = sum(val);
     
     meanvalues = zeros(M,3); %each row: x, y, counter
     for j = 1:length 
@@ -29,8 +35,18 @@ mu = mu_0
     
     mu = meanvalues(:,1:2);
     
+    
+    
+    if i > 1
+        if sum(abs(lastmu-mu)) < min_diff
+            D = D(1:i);
+            break;
+        end
+    end
+    
+    lastmu = mu;
+    
   end
-
 
 end
 

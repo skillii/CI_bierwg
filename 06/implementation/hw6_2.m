@@ -8,10 +8,10 @@
 dataset = load('vowels.mat');
 
 M = 5;
-%mu_0 = repmat(min(dataset.allvow), 5, 1) + repmat(max(dataset.allvow) - min(dataset.allvow), 5, 1) .* rand(5,2);
-mu_0 = 1.0e+03*[0.4, 1; 0.6, 1.2; 0.5, 1.4; 0.7, 1.6; 0.8, 1.8];
+mu_0 = repmat(min(dataset.allvow), 5, 1) + repmat(max(dataset.allvow) - min(dataset.allvow), 5, 1) .* rand(5,2);
+%mu_0 = 1.0e+03*[0.4, 1; 0.6, 1.2; 0.5, 1.4; 0.7, 1.6; 0.8, 1.8];
 
-max_iter = 50;
+max_iter = 1000;
 
 
 % generate scatter plots
