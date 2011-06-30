@@ -1,8 +1,8 @@
 % Homework 6: Expectation Maximation
 
-%clc;
-%clear all;
-%close all;
+clc;
+clear all;
+close all;
 
 
 dataset = load('vowels.mat');
@@ -22,7 +22,8 @@ hold on;
 plot(dataset.e(:,1), dataset.e(:,2), 'g.');
 plot(dataset.i(:,1), dataset.i(:,2), 'r.');
 plot(dataset.o(:,1), dataset.o(:,2), 'k.');
-plot(dataset.y(:,1), dataset.y(:,2), 'c.');
+%plot(dataset.u(:,1), dataset.u(:,2), 'c.');
+plot(dataset.y(:,1), dataset.y(:,2), 'm.');
 xlabel('x1');
 ylabel('x2');
 title('Scatter Plot of Labeled Input Data');
