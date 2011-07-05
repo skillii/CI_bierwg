@@ -31,15 +31,35 @@ max_iter = 1000;
 %%
 % run k-means algorithm
 
-[mu, D] = k_means(dataset.allvow, M, mu_0, max_iter);
+[mu, D, ind] = k_means(dataset.allvow, M, mu_0, max_iter);
 
 
 % plot GMM
 %%
 for m = 1:M
-    plotGaussContour(mu(m,:), 100);
+    %plotGaussContour(mu(m,:), 100);
+    hold on;
+    plot(mu(m,1), mu(m,2),'c o', 'Linewidth', 10); 
 end
 
+%%
+figure;
+ plot(dataset.allvow(ind == 1,1), dataset.allvow(ind == 1,2), 'b.');
+ hold on;
+ plot(dataset.allvow(ind == 2,1), dataset.allvow(ind == 2,2), 'g.');
+ plot(dataset.allvow(ind == 3,1), dataset.allvow(ind == 3,2), 'r.');
+ plot(dataset.allvow(ind == 4,1), dataset.allvow(ind == 4,2), 'k.');
+ plot(dataset.allvow(ind == 5,1), dataset.allvow(ind == 5,2), 'm.');
+ xlabel('x1');
+ ylabel('x2');
+ title('Scatter Plot of classified input data(KMEANS)');
+ legend('A', 'E', 'I', 'O', 'U', 'Y');
+
+for m = 1:M
+    %plotGaussContour(mu(m,:), 100);
+    hold on;
+    plot(mu(m,1), mu(m,2),'c o', 'Linewidth', 10); 
+end
 
 % plot log-Likelihood
 

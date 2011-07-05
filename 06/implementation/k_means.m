@@ -1,4 +1,4 @@
-function [mu, D] = k_means(X, M, mu_0, max_iter)
+function [mu, D, ind] = k_means(X, M, mu_0, max_iter)
 
 %K_MEANS Summary of this function goes here
 %   asdf
