@@ -11,7 +11,7 @@ M = 5;
 alpha_0 = [1; 1; 1; 1; 1];
 mu_0 = repmat(min(dataset.allvow), 5, 1) + repmat(max(dataset.allvow) - min(dataset.allvow), 5, 1) .* rand(5,2);
 Sigma_0 = cat(3, [100000, 100; 100, 100000], [100000, 100; 100, 100000], [100000, 100; 100, 100000], [100000, 100; 100, 100000], [100000, 100; 100, 100000]);
-max_iter = 100;
+max_iter = 1000;
 
 
 % generate scatter plots

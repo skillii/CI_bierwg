@@ -64,7 +64,8 @@ for i = 1:max_iter
     if i > 1
         if abs(L(i) - L(i-1)) < min_diff
             L = L(1:i);
-            break;
+            disp(['Calculation completed after ' num2str(i) ' iterations']);
+            return;
         end
     end
     
