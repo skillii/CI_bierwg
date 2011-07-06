@@ -26,7 +26,7 @@ plot(dataset.o(:,1), dataset.o(:,2), 'k.');
 plot(dataset.y(:,1), dataset.y(:,2), 'm.');
 xlabel('x1');
 ylabel('x2');
-title('Scatter Plot of Labeled Input Data');
+title('Scatter Plot of Labeled Input Data and Results of EM');
 legend('A', 'E', 'I', 'O', 'Y');
 
 
@@ -49,3 +49,46 @@ plot(L);
 xlabel('Iteration');
 ylabel('log-Likelihood');
 title('log-Likelihood Behaviour');
+
+
+
+%% and now for something completely different: the same with diagonal Sigma
+
+Sigma_0_diag = repmat([100000 100000], M, 1);
+
+
+% generate scatter plots
+
+figure;
+plot(dataset.a(:,1), dataset.a(:,2), 'b.');
+hold on;
+plot(dataset.e(:,1), dataset.e(:,2), 'g.');
+plot(dataset.i(:,1), dataset.i(:,2), 'r.');
+plot(dataset.o(:,1), dataset.o(:,2), 'k.');
+%plot(dataset.u(:,1), dataset.u(:,2), 'c.');
+plot(dataset.y(:,1), dataset.y(:,2), 'm.');
+xlabel('x1');
+ylabel('x2');
+title('Scatter Plot of Labeled Input Data and Results of EM with diagonal \Sigma');
+legend('A', 'E', 'I', 'O', 'Y');
+
+
+% run EM algorithm
+
+[alpha_diag, mu_diag, Sigma_diag, L_diag] = EM_diagonal(dataset.allvow, M, alpha_0, mu_0, Sigma_0_diag, max_iter);
+
+
+% plot GMM
+
+for m = 1:M
+    plotGaussContour(mu_diag(m,:), diag(Sigma_diag(m,:)));
+end
+
+
+% plot log-Likelihood
+
+figure;
+plot(L_diag);
+xlabel('Iteration');
+ylabel('log-Likelihood');
+title('log-Likelihood Behaviour for diagonal \Sigma');
