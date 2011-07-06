@@ -1,4 +1,4 @@
-function [alpha, mu, Sigma, L] = EM(X, M, alpha_0, mu_0, Sigma_0, max_iter)
+function [alpha, mu, Sigma, L, r_mn] = EM(X, M, alpha_0, mu_0, Sigma_0, max_iter)
 %EM calculates expectation maximation
 %  size(alpha) = M,1
 %  size(mu) = M,size(X,2)
