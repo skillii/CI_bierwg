@@ -21,8 +21,7 @@ plot(dataset.a(:,1), dataset.a(:,2), 'b.');
 hold on;
 plot(dataset.e(:,1), dataset.e(:,2), 'g.');
 plot(dataset.i(:,1), dataset.i(:,2), 'r.');
-plot(dataset.o(:,1), dataset.o(:,2), 'k.');
-%plot(dataset.u(:,1), dataset.u(:,2), 'c.');
+plot(dataset.o(:,1), dataset.o(:,2), 'c.');
 plot(dataset.y(:,1), dataset.y(:,2), 'm.');
 xlabel('x1');
 ylabel('x2');
@@ -32,7 +31,7 @@ legend('A', 'E', 'I', 'O', 'Y');
 
 % run EM algorithm
 
-[alpha, mu, Sigma, L] = EM(dataset.allvow, M, alpha_0, mu_0, Sigma_0, max_iter);
+[alpha, mu, Sigma, L, r_mn] = EM(dataset.allvow, M, alpha_0, mu_0, Sigma_0, max_iter);
 
 
 % plot GMM
@@ -49,6 +48,33 @@ plot(L);
 xlabel('Iteration');
 ylabel('log-Likelihood');
 title('log-Likelihood Behaviour');
+
+
+
+%% soft-classification
+
+soft_class = vec2ind(r_mn')';
+
+class1 = dataset.allvow(soft_class == 1, :);
+class2 = dataset.allvow(soft_class == 2, :);
+class3 = dataset.allvow(soft_class == 3, :);
+class4 = dataset.allvow(soft_class == 4, :);
+class5 = dataset.allvow(soft_class == 5, :);
+
+
+% generate scatter plots
+
+figure;
+plot(class1(:,1), class1(:,2), 'b.');
+hold on;
+plot(class2(:,1), class2(:,2), 'g.');
+plot(class3(:,1), class3(:,2), 'r.');
+plot(class4(:,1), class4(:,2), 'c.');
+plot(class5(:,1), class5(:,2), 'm.');
+xlabel('x1');
+ylabel('x2');
+title('Scatter Plot of Soft-Classified Input Data');
+legend('Component 1', 'Component 2', 'Component 3', 'Component 4', 'Component 5');
 
 
 
