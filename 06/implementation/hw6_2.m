@@ -37,7 +37,7 @@ max_iter = 1000;
 % plot GMM
 %%
 for m = 1:M
-    %plotGaussContour(mu(m,:), 100);
+    
     hold on;
     plot(mu(m,1), mu(m,2),'c o', 'Linewidth', 10); 
 end
@@ -56,15 +56,8 @@ figure;
  legend('A', 'E', 'I', 'O', 'U', 'Y');
 
 for m = 1:M
-    %plotGaussContour(mu(m,:), 100);
     hold on;
     plot(mu(m,1), mu(m,2),'c o', 'Linewidth', 10); 
 end
 
-% plot log-Likelihood
 
-% figure;
-% plot(L);
-% xlabel('Iteration');
-% ylabel('log-Likelihood');
-% title('log-Likelihood Behaviour');
