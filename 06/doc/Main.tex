@@ -46,7 +46,7 @@
 
 % general
 \newcommand{\DocumentTitle}{Computational Intelligence UE}
-\newcommand{\DocumentSubtitle}{Homework 6: Expectation Maximization and K-means Algorithm}
+\newcommand{\DocumentSubtitle}{Homework 6: Expectation Maximization and k-means Algorithm}
 \newcommand{\ShortTitle}{CI Homework 6} % used in headers (keep short!)
 \newcommand{\DocumentAuthor}{Thomas Ebner, Raphael Hoheneder, Stefan N\"ohmer}
 \newcommand{\DocumentDate}{Graz, \today}
@@ -102,23 +102,29 @@
 % **************************************************************************************************
 % user-defined part
 
-\chapter{Homework: Maximum Likelihood Estimation and Classification}
+\chapter{Homework: Expectation Maximization and k-means Algorithm}
 
-%\input{5_1_1}
-%\clearpage
+\input{6_1_EM}
+\clearpage
 
 %\input{5_1_2}
 %\clearpage
 
 \newpage
 
+
 \chapter{Listings}
 
-%\section{Classification using the amplitude only}
-%\lstinputlisting[language=matlab]{../implementation/ue5_1.m}
+\section{Expectation Maximization Algorithm}
 
-%\section{Classification using both amplitude and phase}
-%\lstinputlisting[language=matlab]{../implementation/ue5_1_2.m}
+\subsection{Function \texttt{EM}}
+\lstinputlisting[language=matlab]{../implementation/em.m}
+
+\subsection{Function \texttt{EM_diagonal} for diagonal Covariance Matrices}
+\lstinputlisting[language=matlab]{../implementation/em_diagonal.m}
+
+\subsection{Script for Expectation Maximization Algorithm}
+\lstinputlisting[language=matlab]{../implementation/hw6_1.m}
 
 
 % **************************************************************************************************
